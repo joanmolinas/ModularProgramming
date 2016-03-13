@@ -1,3 +1,3 @@
 #ModularProgramminng
-1. ./Compular.sh
-2. ./main.exe
+1.  ./Compilar.sh
+2.  ./main.exe
