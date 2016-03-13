@@ -100,7 +100,7 @@ void cercle_tests() {
 
 int main() {
 
-  // capsa_tests();
+  capsa_tests();
   cercle_tests();
   return 0;
 }
