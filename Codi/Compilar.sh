@@ -1,5 +1,6 @@
 #!/bin/bash
-# g++ -c ./Implementacions/Punt.cc  -I ./Headers/
+#Compila punt
+g++ -c ./Implementacions/Punt.cc  -I ./Headers/
 #Compila capsa
 g++ -c ./Implementacions/Capsa.cc  -I ./Headers/
 #Compila Cercle

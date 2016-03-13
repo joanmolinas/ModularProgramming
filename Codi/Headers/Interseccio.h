@@ -1,6 +1,5 @@
 #ifndef INTERSECCIO_H
 #define INTERSECCIO_H
-#include <iostream>
 
 template<class T>
 struct Interseccio {
@@ -10,5 +9,4 @@ struct Interseccio {
   bool existeix_interseccio;
   T objecte_interseccio;
 };
-
 #endif
