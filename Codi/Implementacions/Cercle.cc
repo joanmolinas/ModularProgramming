@@ -74,6 +74,7 @@ float Cercle::get_area() const
 /* Pre: cert */
 /* Post: retorna l'àrea */
 {
+  //TODO: Acabar area
   return 0;
 }
 
@@ -152,7 +153,6 @@ Capsa Cercle::capsa_maxima() const
 
   Capsa maxima(inicial, final);
   return maxima;
-  return Capsa();
 }
 
 ///Lectura i escriptura
