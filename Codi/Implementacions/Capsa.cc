@@ -93,8 +93,21 @@ Capsa::~Capsa()
    bool cmin_esta_dins = this->esta_dins(c.get_pmin());
    bool cmax_esta_dins = this->esta_dins(c.get_pmax());
 
+   //max(pmin.x, pmax.x) max(pmin.y, pmax.y)
+   //min(pmin.x, pmax.x) min(pmin.y, pmax.y)
+
    if (cmin_esta_dins || cmax_esta_dins) {
      interseccio.existeix_interseccio = true;
+
+     float x_inicial = max(pmin.coordenadax(), c.get_pmin().coordenadax());
+     float y_inicial = max(pmin.coordenaday(), c.get_pmin().coordenaday());
+     float x_final = min(pmax.coordenadax(), c.get_pmax().coordenadax());
+     float y_final = min(pmax.coordenaday(), c.get_pmax().coordenaday());
+     Punt inici(x_inicial, y_inicial);
+     Punt final(x_final, y_final);
+     Capsa inter(inici, final);
+
+     interseccio.objecte_interseccio = inter;
    }
 
    return interseccio;

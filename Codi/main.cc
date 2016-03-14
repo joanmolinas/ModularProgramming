@@ -17,11 +17,11 @@ void capsa_tests() {
   cout<<"c3 = "<<c3<<endl;
 
   cout<<"\n----- Modificant minim c -----"<<endl;
-  c.set_pmin(Punt(1,2));
+  c.set_pmin(Punt(2,3));
   cout<<"c = "<<c<<endl;
 
   cout<<"\n----- Modificant màxim c -----"<<endl;
-  c.set_pmax(Punt(3,3));
+  c.set_pmax(Punt(3,5));
   cout<<"c = "<<c<<endl;
 
   cout<<"\n----- Consultant minim de c -----"<<endl;
@@ -101,6 +101,6 @@ void cercle_tests() {
 int main() {
 
   capsa_tests();
-  cercle_tests();
+  // cercle_tests();
   return 0;
 }

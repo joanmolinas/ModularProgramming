@@ -140,13 +140,12 @@ Capsa Cercle::capsa_maxima() const
 */
 {
 
-  float costat_quadrat = radi*2;
   float x = centre.coordenadax();
   float y = centre.coordenaday();
-  float x_inicial = x-costat_quadrat;
-  float y_inicial = y-costat_quadrat;
-  float x_final = x+costat_quadrat;
-  float y_final = y+costat_quadrat;
+  float x_inicial = x-radi;
+  float y_inicial = y-radi;
+  float x_final = x+radi;
+  float y_final = y+radi;
 
   Punt inicial(x_inicial, y_inicial);
   Punt final(x_final, y_final);

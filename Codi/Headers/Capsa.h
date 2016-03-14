@@ -50,7 +50,7 @@ public:
   /* Post: Crea una capsa amb les 4 coordenades a l'origen (0,0) */
 
   Capsa(Punt pmin, Punt pmax);
-  /* Pre: cert */
+  /* Pre: El primer punt ja serà el punt mínim i el segon el màxim */
   /* Post: Crea una capsa a partir de 2 punts Pmin i Pmax */
 
   Capsa(const Capsa &c);
