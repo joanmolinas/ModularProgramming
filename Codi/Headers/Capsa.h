@@ -64,11 +64,11 @@ public:
 
    ///Setters
    void set_pmin(Punt min);
-   /* Pre: cert */
+   /* Pre: El nou mínim es menor que el màxim */
    /* Post: El pmin de p.i. passa a ser min */
 
    void set_pmax(Punt max);
-   /* Pre: cert */
+   /* Pre: El nou maxim es major al minim */
    /* Post: El pmax de p.i. passa a ser max */
 
    ///Getters
@@ -94,7 +94,6 @@ public:
             capça amb les coordenades de l'intersecció, si no, existeix_interseccio
             val false i retorna una capça amb punts a l'origen. */
 
-    //TODO: Acabar
 
    ///Lectura i escriptura
    friend ostream& operator<<(ostream &os, const Capsa &c);

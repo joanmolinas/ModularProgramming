@@ -72,10 +72,10 @@ float Cercle::get_longitud() const
 
 float Cercle::get_area() const
 /* Pre: cert */
-/* Post: retorna l'àrea */
+/* Post: retorna l'àrea (π * radi^2) */
 {
-  //TODO: Acabar area
-  return 0;
+  float result = M_PI*pow(radi,2);
+  return result;
 }
 
 bool Cercle::esta_dins(const Punt &p) const

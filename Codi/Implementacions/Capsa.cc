@@ -33,7 +33,7 @@ Capsa::~Capsa()
 
 ///Setters
  void Capsa::set_pmin(Punt min)
- /* Pre: cert */
+ /* Pre: El nou mínim es menor que el màxim actual */
  /* Post: El pmin de p.i. passa a ser min */
  {
    this->pmin = min;
@@ -41,7 +41,7 @@ Capsa::~Capsa()
  }
 
  void Capsa::set_pmax(Punt max)
- /* Pre: cert */
+ /* Pre: El nou maxim es major al minim actual */
  /* Post: El pmax de p.i. passa a ser max */
  {
    this->pmax = max;
@@ -93,11 +93,7 @@ Capsa::~Capsa()
    bool cmin_esta_dins = this->esta_dins(c.get_pmin());
    bool cmax_esta_dins = this->esta_dins(c.get_pmax());
 
-   //max(pmin.x, pmax.x) max(pmin.y, pmax.y)
-   //min(pmin.x, pmax.x) min(pmin.y, pmax.y)
-
    if (cmin_esta_dins || cmax_esta_dins) {
-     interseccio.existeix_interseccio = true;
 
      float x_inicial = max(pmin.coordenadax(), c.get_pmin().coordenadax());
      float y_inicial = max(pmin.coordenaday(), c.get_pmin().coordenaday());
@@ -107,6 +103,7 @@ Capsa::~Capsa()
      Punt final(x_final, y_final);
      Capsa inter(inici, final);
 
+     interseccio.existeix_interseccio = true;
      interseccio.objecte_interseccio = inter;
    }
 

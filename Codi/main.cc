@@ -43,8 +43,12 @@ void capsa_tests() {
 
   cout<<"\n----- Mirant si c1 i c2 creant interseccio -----"<<endl;
   Interseccio<Capsa> interseccio = c2.interseccio(c);
-  cout<<interseccio.objecte_interseccio<<endl;
-  //TODO
+  if (interseccio.existeix_interseccio) {
+    cout<<interseccio.objecte_interseccio<<endl;
+  } else {
+    cout<<"No existeix interseccio"<<endl;
+  }
+
 }
 
 void cercle_tests() {
@@ -75,6 +79,9 @@ void cercle_tests() {
   cout<<"\n----- Consultant radi de c -----"<<endl;
   cout<<"c = "<<c.get_radi()<<endl;
 
+  cout<<"\n----- Consultant Àrea de c -----"<<endl;
+  cout<<c.get_area()<<endl;
+
   cout<<"\n----- Consultant si un punt està dins el cercle -----"<<endl;
   Punt p(2,2.5);
   if (c.esta_dins(p)) {
@@ -101,6 +108,6 @@ void cercle_tests() {
 int main() {
 
   capsa_tests();
-  // cercle_tests();
+  cercle_tests();
   return 0;
 }
