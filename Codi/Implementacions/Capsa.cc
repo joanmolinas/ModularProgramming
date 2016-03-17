@@ -5,7 +5,7 @@ Capsa::Capsa()
 /* Pre: cert */
 /* Post: Crea una capsa amb les 4 coordenades a l'origen (0,0) */
 {
-  this->_init(Punt(0,0),Punt(0,0));
+  this->_init(Punt(),Punt(0,0));
 }
 
 Capsa::Capsa(Punt pmin, Punt pmax)
@@ -30,19 +30,22 @@ Capsa::~Capsa()
 }
 
 ///PUBLIC API
-
 ///Setters
  void Capsa::set_pmin(Punt min)
- /* Pre: El nou mínim es menor que el màxim actual */
- /* Post: El pmin de p.i. passa a ser min */
+ /* Pre: En nou punt min serà més petit que el màxim actual, es recomana
+ primer canviar el mínim, i després el màxim, si s'introdueixen unes coordenades
+ incorrectes (pmin > pmax...) la capça no serà vàlida per treballar.*/
+ /* Post: El pmin de p.i. agafa el valor de  min */
  {
    this->pmin = min;
    this->_actualitza_dimensions();
  }
 
  void Capsa::set_pmax(Punt max)
- /* Pre: El nou maxim es major al minim actual */
- /* Post: El pmax de p.i. passa a ser max */
+ /* Pre: En nou punt max serà més gran que el mínim actual, es recomana
+ primer canviar el mínim, i després el màxim, si s'introdueixen unes coordenades
+ incorrectes (pmin > pmax...) la capça no serà vàlida per treballar.*/
+ /* Post: El pmax de p.i. gafa el valor de max */
  {
    this->pmax = max;
    this->_actualitza_dimensions();
@@ -89,23 +92,23 @@ Capsa::~Capsa()
 
  {
    Interseccio<Capsa> interseccio;
-   //Primer de tot determinem si la capsa c intersecta el p.i
-   bool cmin_esta_dins = this->esta_dins(c.get_pmin());
-   bool cmax_esta_dins = this->esta_dins(c.get_pmax());
 
-   if (cmin_esta_dins || cmax_esta_dins) {
+   float x_inicial = max(pmin.coordenadax(), c.get_pmin().coordenadax());
+   float y_inicial = max(pmin.coordenaday(), c.get_pmin().coordenaday());
+   float x_final = min(pmax.coordenadax(), c.get_pmax().coordenadax());
+   float y_final = min(pmax.coordenaday(), c.get_pmax().coordenaday());
+   Punt inici(x_inicial, y_inicial);
+   Punt final(x_final, y_final);
+   Capsa inter(inici, final);
 
-     float x_inicial = max(pmin.coordenadax(), c.get_pmin().coordenadax());
-     float y_inicial = max(pmin.coordenaday(), c.get_pmin().coordenaday());
-     float x_final = min(pmax.coordenadax(), c.get_pmax().coordenadax());
-     float y_final = min(pmax.coordenaday(), c.get_pmax().coordenaday());
-     Punt inici(x_inicial, y_inicial);
-     Punt final(x_final, y_final);
-     Capsa inter(inici, final);
+   bool x_dins_pi = this->esta_dins(inici);
+   bool y_dins_pi = this->esta_dins(final);
+   bool x_dins_par = c.esta_dins(inici);
+   bool y_dins_par = c.esta_dins(final);
 
-     interseccio.existeix_interseccio = true;
-     interseccio.objecte_interseccio = inter;
-   }
+
+   interseccio.existeix_interseccio = x_dins_pi && y_dins_pi && x_dins_par && y_dins_par;
+   interseccio.objecte_interseccio = inter;
 
    return interseccio;
  }
@@ -148,6 +151,7 @@ Capsa::~Capsa()
  /* Pre: cert */
  /* Post: Actualitza la dimensió */
  {
+
    this->dimensio.width = pmax.coordenadax() - pmin.coordenadax();
    this->dimensio.height = pmax.coordenaday() - pmin.coordenaday();
  }

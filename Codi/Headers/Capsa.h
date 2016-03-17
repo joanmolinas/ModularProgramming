@@ -42,6 +42,10 @@ private:
   /* Pre: cert */
   /* Post: Actualitza la dimensió */
 
+  void _actualitza_punts();
+  /* Pre: cert */
+  /* Post: Si el pmin es més gran que el pmax els canviarà, si no els deixarà com estan */
+
 public:
 
   ///Constructors
@@ -64,12 +68,16 @@ public:
 
    ///Setters
    void set_pmin(Punt min);
-   /* Pre: El nou mínim es menor que el màxim */
-   /* Post: El pmin de p.i. passa a ser min */
+   /* Pre: En nou punt min serà més petit que el màxim actual, es recomana
+   primer canviar el mínim, i després el màxim, si s'introdueixen unes coordenades
+   incorrectes (pmin > pmax...) la capça no serà vàlida per treballar.*/
+   /* Post: El pmin de p.i. agafa el valor de  min */
 
    void set_pmax(Punt max);
-   /* Pre: El nou maxim es major al minim */
-   /* Post: El pmax de p.i. passa a ser max */
+   /* Pre: En nou punt max serà més gran que el mínim actual, es recomana
+   primer canviar el mínim, i després el màxim, si s'introdueixen unes coordenades
+   incorrectes (pmin > pmax...) la capça no serà vàlida per treballar.*/
+   /* Post: El pmax de p.i. gafa el valor de max */
 
    ///Getters
    Punt get_pmin() const;

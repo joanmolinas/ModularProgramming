@@ -9,7 +9,7 @@ void capsa_tests() {
   cout<<"c = "<<c<<endl;
 
   cout<<"\n----- Creant capça mitjançant 2 punts -----"<<endl;
-  Capsa c2(Punt(1,1), Punt(4,4));
+  Capsa c2(Punt(2,2), Punt(4,8));
   cout<<"c2 = "<<c2<<endl;
 
   cout<<"\n----- Creant per còpia -----"<<endl;
@@ -17,11 +17,11 @@ void capsa_tests() {
   cout<<"c3 = "<<c3<<endl;
 
   cout<<"\n----- Modificant minim c -----"<<endl;
-  c.set_pmin(Punt(2,3));
+  c.set_pmin(Punt(10,10));
   cout<<"c = "<<c<<endl;
 
   cout<<"\n----- Modificant màxim c -----"<<endl;
-  c.set_pmax(Punt(3,5));
+  c.set_pmax(Punt(11,11));
   cout<<"c = "<<c<<endl;
 
   cout<<"\n----- Consultant minim de c -----"<<endl;

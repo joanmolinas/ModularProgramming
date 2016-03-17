@@ -3,6 +3,15 @@
 #include <iostream>
 using namespace std;
 
+void Punt::swap(Punt &p1, Punt &p2)
+/* Pre: cert */
+/* Post: Intercanviarà els punts */
+{
+  Punt aux = p2;
+  p2 = p1;
+  p1 = aux;
+}
+
 Punt::Punt()
 /* Pre: cert */
 /* Post: el resultat es un punt de coordenades 0, 0 */
@@ -101,6 +110,32 @@ Punt Punt::operator+(Punt p) const
 {
   return Punt (x + p.x, y + p.y);
 }
+
+bool Punt::operator>(Punt p) const
+ /* Pre: cert */
+ /* Post: el resultat indica si el p.i. es major al p o no */
+ {
+   return x > p.coordenadax() || y > p.coordenaday();
+ }
+bool Punt::operator<(Punt p) const
+/* Pre: cert */
+/* Post: el resultat indica si el p.i. es menor al p o no */
+{
+   return x < p.coordenadax() || y < p.coordenaday();
+}
+bool Punt::operator>=(Punt p) const
+ /* Pre: cert */
+ /* Post: el resultat indica si el p.i. es major o igual al p o no */
+{
+   return x >= p.coordenadax() || y >= p.coordenaday();
+}
+bool Punt::operator<=(Punt p) const
+/* Pre: cert */
+/* Post: el resultat indica si el p.i. es major o igual al p o no */
+{
+  return x > p.coordenadax() || y > p.coordenaday();
+}
+
 
 ostream& operator<<(ostream &os, const Punt &p)
 /* Pre: cert */
